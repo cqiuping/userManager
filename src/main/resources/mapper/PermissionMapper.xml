@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace = "com.demo.mvc.service.PermissionMapper">
+    <resultMap id="permission" type="com.demo.mvc.entity.Permission">
+        <result property="id" column="id" />
+        <result property="name" column="name"/>
+        <result property="url" column="url"/>
+    </resultMap>
+
+    <resultMap id="rolePermission" type="com.demo.mvc.entity.RolePermission">
+        <result property="id" column="id"/>
+        <result property="role_id" column="role_id"/>
+        <result property="permission_id" column="permission_id"/>
+    </resultMap>
+
+    <select id="findRolePermissionByRid" resultMap="rolePermission">
+        SELECT * From role_permission WHERE role_id=#{rid};
+    </select>
+
+    <select id="findPermissionById" resultMap="permission">
+        SELECT * FROM  permission WHERE id=#{id}
+    </select>
+</mapper>

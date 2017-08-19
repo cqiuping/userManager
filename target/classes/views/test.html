@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://cdn.bootcss.com/angular.js/1.6.3/angular.min.js"></script>
+    <title>AngularJSTest</title>
+</head>
+<body ng-app="app" ng-controller="MyController">
+<p>User</p>
+<p>ID</p>
+<input  name="id" ng-model="saveUser.id">
+<br>
+<p>Name</p>
+<input  name="name" ng-model="saveUser.name">
+<br>
+<p>age</p>
+<input  name="age" ng-model="saveUser.age">
+<br>
+<button ng-click="getUser()">提交</button>
+
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('MyController', function ($scope, $http){
+        console.log($scope.saveUser.age);
+        $scope.getUser = function(){
+            $http({
+                method: "POST",
+                url: "/test",
+                data: $scope.saveUser
+            }).success(function (data, status){
+                // handle success
+            })
+        };
+    });
+</script>
+</html>

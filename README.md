@@ -1,1 +1,1 @@
-# userManager
+用户管理系统，其实就是简单的整合了springMVC + mybatis + shiro的功能，学习实现的demo
